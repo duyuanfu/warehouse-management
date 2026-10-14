@@ -45,7 +45,7 @@
   color: #1890ff;
 }
 
-/* 弹窗样式 */
+/* 弹窗样式：严格限制宽度与盒模型，杜绝卡片溢出 */
 .modal-mask {
   position: fixed;
   top: 0;
@@ -58,16 +58,20 @@
   justify-content: center;
   z-index: 999;
   padding: 30rpx;
+  box-sizing: border-box;
 }
 
 .modal-box {
   background-color: #ffffff;
   border: 1rpx solid #cccccc;
-  border-radius: 6rpx;
+  border-radius: 8rpx;
   width: 100%;
+  max-width: 660rpx;
   max-height: 80vh;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .modal-header {
@@ -76,6 +80,7 @@
   align-items: center;
   padding: 20rpx;
   border-bottom: 1rpx solid #eeeeee;
+  box-sizing: border-box;
 }
 
 .modal-title {
@@ -91,15 +96,21 @@
 
 .modal-body {
   padding: 20rpx;
-  max-height: 50vh;
+  max-height: 52vh;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .detail-box {
   background-color: #fafafa;
   border: 1rpx solid #eeeeee;
-  padding: 14rpx;
+  padding: 16rpx;
   border-radius: 4rpx;
-  margin-bottom: 12rpx;
+  margin-bottom: 14rpx;
+  box-sizing: border-box;
+  width: 100%;
+  word-break: break-all;
 }
 
 .detail-name {
@@ -107,12 +118,14 @@
   font-weight: bold;
   color: #333333;
   margin-bottom: 6rpx;
+  word-break: break-all;
 }
 
 .detail-sub {
   font-size: 22rpx;
   color: #777777;
   margin-bottom: 6rpx;
+  word-break: break-all;
 }
 
 .detail-foot {
@@ -127,4 +140,5 @@
   border-top: 1rpx solid #eeeeee;
   display: flex;
   justify-content: flex-end;
+  box-sizing: border-box;
 }
