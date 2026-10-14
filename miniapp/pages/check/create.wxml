@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="card">
+    <view class="block-title">盘点基本信息</view>
+    
+    <view class="form-item">
+      <text class="form-label">盘点仓库 *</text>
+      <picker bindchange="onWarehouseChange" value="{{warehouseIndex}}" range="{{warehouseList}}" range-key="name">
+        <view class="form-picker">
+          <text>{{warehouseList[warehouseIndex] ? warehouseList[warehouseIndex].name : '请选择盘点仓库'}}</text>
+          <text class="arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">说明</text>
+      <input class="form-input" placeholder="例: 月度例行盘点" value="{{remark}}" bindinput="onInputRemark" />
+    </view>
+  </view>
+
+  <!-- 待盘点货品明细录入 -->
+  <view class="card" wx:if="{{warehouseIndex >= 0}}">
+    <view class="block-title title-between">
+      <text>实盘录入</text>
+      <text class="sub-count">共 {{goodsList.length}} 种货品</text>
+    </view>
+
+    <view class="check-list">
+      <view class="check-box" wx:for="{{goodsList}}" wx:key="id">
+        <view class="check-head">
+          <text class="check-goods-name">{{item.name}}</text>
+          <text class="check-sku">SKU: {{item.skuCode}}</text>
+        </view>
+
+        <view class="check-grid">
+          <view class="col">
+            <text class="col-label">系统账面</text>
+            <text class="col-val">{{item.stockQuantity}}</text>
+          </view>
+          <view class="col">
+            <text class="col-label">实盘数量</text>
+            <input class="actual-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
+          </view>
+          <view class="col">
+            <text class="col-label">盈亏结果</text>
+            <text class="col-diff {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
+              {{item.diff > 0 ? '+' + item.diff : item.diff}}
+            </text>
+          </view>
+        </view>
+
+        <view class="remark-input-box">
+          <input class="form-input-sm" placeholder="说明盈亏原因(选填)" value="{{item.remark}}" bindinput="onItemRemarkInput" data-index="{{index}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class="btn-primary btn-submit" wx:if="{{goodsList.length > 0}}" bindtap="handleSubmitCheck">
+      确认盘点并同步库存
+    </view>
+  </view>
+</view>

@@ -1,0 +1,117 @@
+.block-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 14rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  margin-bottom: 20rpx;
+}
+
+.title-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-count {
+  font-size: 24rpx;
+  color: #888888;
+  font-weight: normal;
+}
+
+.check-box {
+  background-color: #fafafa;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 4rpx;
+  padding: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.check-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.check-goods-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.check-sku {
+  font-size: 22rpx;
+  color: #777777;
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1rpx solid #eeeeee;
+  padding: 12rpx 0;
+  border-radius: 4rpx;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.col-label {
+  font-size: 22rpx;
+  color: #888888;
+  margin-bottom: 6rpx;
+}
+
+.col-val {
+  font-size: 28rpx;
+  color: #444444;
+}
+
+.actual-input {
+  border: 1rpx solid #1890ff;
+  border-radius: 4rpx;
+  width: 120rpx;
+  height: 48rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.col-diff {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #666666;
+}
+
+.text-green {
+  color: #52c41a;
+}
+
+.text-red {
+  color: #f5222d;
+}
+
+.remark-input-box {
+  margin-top: 12rpx;
+}
+
+.form-input-sm {
+  background-color: #ffffff;
+  border: 1rpx solid #cccccc;
+  border-radius: 4rpx;
+  padding: 8rpx 14rpx;
+  font-size: 24rpx;
+}
+
+.btn-submit {
+  margin-top: 24rpx;
+}
+
+.arrow {
+  color: #999999;
+}

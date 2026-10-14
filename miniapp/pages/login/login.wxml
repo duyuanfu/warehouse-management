@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="card login-box">
+    <view class="system-title">仓库管理系统</view>
+    
+    <view class="form-item">
+      <text class="form-label">账号</text>
+      <input class="form-input" placeholder="请输入员工账号" value="{{account}}" bindinput="onInputAccount" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">密码</text>
+      <input class="form-input" password placeholder="请输入密码" value="{{password}}" bindinput="onInputPassword" />
+    </view>
+
+    <view class="btn-primary" bindtap="handleLogin">登 录</view>
+  </view>
+</view>

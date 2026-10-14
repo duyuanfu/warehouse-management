@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="order-list">
+    <block wx:if="{{orderList.length > 0}}">
+      <view class="card order-card" wx:for="{{orderList}}" wx:key="id">
+        <view class="order-head">
+          <text class="order-no">盘点单号: {{item.checkNo}}</text>
+          <text class="badge badge-normal">已完成</text>
+        </view>
+
+        <view class="order-body">
+          <view class="info-line">盘点仓库: {{item.warehouseName}}</view>
+          <view class="info-line">经办人员: {{item.employeeName}}</view>
+          <view class="info-line">盘点时间: {{item.checkTime}}</view>
+          <view class="info-line" wx:if="{{item.remark}}">说明备注: {{item.remark}}</view>
+        </view>
+
+        <view class="order-foot">
+          <view class="total-text">
+            明细: {{item.totalItems}} 项 (
+            <text class="text-green">+{{item.profitCount}}盈</text> / 
+            <text class="text-red">-{{item.lossCount}}亏</text>)
+          </view>
+          <button class="btn-sm" bindtap="viewDetail" data-id="{{item.id}}">盈亏明细</button>
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="empty-box">暂无盘点历史记录</view>
+  </view>
+
+  <!-- 盘点明细弹窗 -->
+  <view class="modal-mask" wx:if="{{showDetailModal}}" bindtap="closeDetailModal">
+    <view class="modal-box" catchtap="stopProp">
+      <view class="modal-header">
+        <text class="modal-title">盘点盈亏详情 [{{currentDetail.checkNo}}]</text>
+        <text class="modal-close" bindtap="closeDetailModal">关闭</text>
+      </view>
+      
+      <scroll-view scroll-y class="modal-body">
+        <view class="detail-box" wx:for="{{currentDetail.items}}" wx:key="id">
+          <view class="detail-name">{{item.goodsName}}</view>
+          <view class="detail-sub">SKU: {{item.goodsSku}} | 原因: {{item.remark || '-'}}</view>
+          <view class="detail-foot">
+            <text>账面: {{item.systemStock}} | 实盘: {{item.actualStock}}</text>
+            <text class="text-bold {{item.differenceStock > 0 ? 'text-green' : (item.differenceStock < 0 ? 'text-red' : '')}}">
+              差异: {{item.differenceStock > 0 ? '+' + item.differenceStock : item.differenceStock}}
+            </text>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="modal-footer">
+        <button class="btn-sm" bindtap="closeDetailModal">确 定</button>
+      </view>
+    </view>
+  </view>
+</view>

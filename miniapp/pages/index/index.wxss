@@ -1,0 +1,126 @@
+.user-card {
+  border-left: 6rpx solid #1890ff;
+}
+
+.user-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-title {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.user-role {
+  font-size: 26rpx;
+  color: #1890ff;
+  margin-left: 10rpx;
+}
+
+.user-account {
+  font-size: 24rpx;
+  color: #777777;
+  margin-top: 8rpx;
+}
+
+.block-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  margin-bottom: 20rpx;
+}
+
+.grid-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.stat-box {
+  background-color: #fafafa;
+  border: 1rpx solid #e8e8e8;
+  padding: 20rpx;
+  text-align: center;
+  border-radius: 4rpx;
+}
+
+.stat-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 6rpx;
+}
+
+.stat-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.text-blue {
+  color: #1890ff;
+}
+
+.text-red {
+  color: #f5222d;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.menu-btn {
+  background-color: #fafafa;
+  border: 1rpx solid #d9d9d9;
+  border-radius: 6rpx;
+  padding: 20rpx 16rpx;
+}
+
+.menu-btn:active {
+  background-color: #f0f0f0;
+}
+
+.menu-main {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.menu-sub {
+  font-size: 22rpx;
+  color: #888888;
+  margin-top: 6rpx;
+}
+
+.list-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.link-item:last-child {
+  border-bottom: none;
+}
+
+.arrow {
+  color: #bbbbbb;
+}

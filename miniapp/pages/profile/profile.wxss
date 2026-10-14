@@ -1,0 +1,47 @@
+.user-info-row {
+  display: flex;
+  align-items: center;
+}
+
+.info-meta {
+  flex: 1;
+}
+
+.name-line {
+  display: flex;
+  align-items: center;
+}
+
+.emp-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.user-role-text {
+  font-size: 26rpx;
+  color: #1890ff;
+  margin-left: 10rpx;
+}
+
+.emp-account {
+  font-size: 24rpx;
+  color: #777777;
+  margin-top: 8rpx;
+}
+
+.emp-phone {
+  font-size: 24rpx;
+  color: #777777;
+  margin-top: 6rpx;
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 16rpx 0;
+  color: #f5222d;
+  border-color: #ffa39e;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}

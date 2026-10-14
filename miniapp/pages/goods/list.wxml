@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- 顶部搜索与操作栏 -->
+  <view class="card search-card">
+    <!-- 搜索输入主行 -->
+    <view class="search-main-row">
+      <input class="search-input-large" 
+             placeholder="请输入货品名称或SKU搜索" 
+             value="{{keyword}}" 
+             bindinput="onInputKeyword" 
+             bindconfirm="onSearchConfirm" />
+      <button class="btn-search-action" bindtap="onSearchConfirm">搜索</button>
+      <button wx:if="{{keyword}}" class="btn-reset-action" bindtap="clearSearch">重置</button>
+    </view>
+
+    <!-- 筛选标签与新增货品行：绝不换行 -->
+    <view class="action-sub-row">
+      <view class="filter-group">
+        <view class="filter-item {{!onlyWarning ? 'filter-active' : ''}}" bindtap="switchFilter" data-warning="false">
+          全部货品
+        </view>
+        <view class="filter-item {{onlyWarning ? 'filter-active filter-warn' : ''}}" bindtap="switchFilter" data-warning="true">
+          预警货品
+        </view>
+      </view>
+
+      <view wx:if="{{isSupervisor}}" class="btn-add-goods" bindtap="navToCreate">
+        + 新增货品
+      </view>
+    </view>
+  </view>
+
+  <!-- 货品列表 -->
+  <view class="goods-list">
+    <block wx:if="{{goodsList.length > 0}}">
+      <view class="card item-card" wx:for="{{goodsList}}" wx:key="id">
+        <view class="item-head">
+          <text class="goods-title">{{item.name}}</text>
+          <text class="badge {{item.isLowStock ? 'badge-warning' : 'badge-normal'}}">
+            {{item.isLowStock ? '低库存预警' : '库存正常'}}
+          </text>
+        </view>
+
+        <view class="item-detail">
+          <view class="prop-line">SKU: {{item.skuCode}} | 规格: {{item.spec || '标准'}}</view>
+          <view class="prop-line">仓库: {{item.warehouseName || '-'}} | 单价: ¥{{item.price}}</view>
+          <view class="prop-line">安全库存: {{item.safetyStock}} 件 | 乐观锁版本号: v{{item.version}}</view>
+        </view>
+
+        <view class="item-foot">
+          <view class="stock-show">
+            当前库存: <text class="stock-bold {{item.isLowStock ? 'text-red' : 'text-blue'}}">{{item.stockQuantity}}</text> 件
+          </view>
+          <button class="btn-sm" bindtap="navToEdit" data-id="{{item.id}}">
+            {{isSupervisor ? '编辑/维护' : '查看详情'}}
+          </button>
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="empty-box">暂无货品数据</view>
+  </view>
+</view>

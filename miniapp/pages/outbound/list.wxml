@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="order-list">
+    <block wx:if="{{orderList.length > 0}}">
+      <view class="card order-card" wx:for="{{orderList}}" wx:key="id">
+        <view class="order-head">
+          <text class="order-no">单号: {{item.orderNo}}</text>
+          <text class="badge badge-normal">已出库</text>
+        </view>
+
+        <view class="order-body">
+          <view class="info-line">客户单位: {{item.partnerName}}</view>
+          <view class="info-line">发出仓库: {{item.warehouseName}}</view>
+          <view class="info-line">经办人员: {{item.employeeName}}</view>
+          <view class="info-line">出库时间: {{item.outboundTime}}</view>
+          <view class="info-line" wx:if="{{item.remark}}">备注说明: {{item.remark}}</view>
+        </view>
+
+        <view class="order-foot">
+          <view class="total-text">
+            出库总量: <text class="text-bold text-orange">{{item.totalQuantity}}</text> 件
+          </view>
+          <button class="btn-sm" bindtap="viewDetail" data-id="{{item.id}}">查看明细</button>
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="empty-box">暂无出库单据记录</view>
+  </view>
+
+  <!-- 明细弹窗 -->
+  <view class="modal-mask" wx:if="{{showDetailModal}}" bindtap="closeDetailModal">
+    <view class="modal-box" catchtap="stopProp">
+      <view class="modal-header">
+        <text class="modal-title">出库单明细 [{{currentDetail.orderNo}}]</text>
+        <text class="modal-close" bindtap="closeDetailModal">关闭</text>
+      </view>
+      
+      <scroll-view scroll-y class="modal-body">
+        <view class="detail-box" wx:for="{{currentDetail.items}}" wx:key="id">
+          <view class="detail-name">{{item.goodsName}}</view>
+          <view class="detail-sub">SKU: {{item.goodsSku}} | 售价: ¥{{item.price}}</view>
+          <view class="detail-foot">
+            <text>出库数量: <text class="text-orange text-bold">-{{item.quantity}}</text> 件</text>
+            <text>小计: ¥{{item.totalAmount}}</text>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="modal-footer">
+        <button class="btn-sm" bindtap="closeDetailModal">确 定</button>
+      </view>
+    </view>
+  </view>
+</view>

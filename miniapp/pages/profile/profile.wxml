@@ -1,0 +1,20 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="card">
+    <view class="user-info-row">
+      <view class="info-meta">
+        <view class="name-line">
+          <text class="emp-name">{{userInfo.name || '系统用户'}}</text>
+          <text class="user-role-text">【{{userInfo.roleName || '理货员'}}】</text>
+        </view>
+        <view class="emp-account">工号/账号: {{userInfo.account || '-'}}</view>
+        <view class="emp-phone" wx:if="{{userInfo.phone}}">联系电话: {{userInfo.phone}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <button class="btn-sm btn-logout" bindtap="handleLogout">
+    退出当前账号
+  </button>
+</view>

@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 当前登录员工信息 -->
+  <view class="card user-card">
+    <view class="user-row">
+      <view class="user-title">
+        <text class="user-name">{{userInfo.name || '系统用户'}}</text>
+        <text class="user-role">【{{userInfo.roleName || '理货员'}}】</text>
+      </view>
+      <view class="user-account">工号/账号: {{userInfo.account || '-'}}</view>
+    </view>
+  </view>
+
+  <!-- 核心业务功能菜单 -->
+  <view class="card">
+    <view class="block-title">仓储业务操作</view>
+    <view class="menu-grid">
+      <view class="menu-btn" bindtap="navToGoods">
+        <view class="menu-main">货品库存管理</view>
+        <view class="menu-sub">{{userInfo.role === 'SUPERVISOR' ? '增删改查货品/看库存' : '查看实时库存与预警'}}</view>
+      </view>
+      <view class="menu-btn" bindtap="navToInboundCreate">
+        <view class="menu-main">采购入库</view>
+        <view class="menu-sub">供应商供货增加库存</view>
+      </view>
+      <view class="menu-btn" bindtap="navToOutboundCreate">
+        <view class="menu-main">销售出库</view>
+        <view class="menu-sub">客户发货扣减库存</view>
+      </view>
+      <view class="menu-btn" bindtap="navToCheckCreate">
+        <view class="menu-main">仓库盘点</view>
+        <view class="menu-sub">录入实盘并更新库存</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 单据明细查询 -->
+  <view class="card">
+    <view class="block-title">单据记录查看</view>
+    <view class="list-links">
+      <view class="link-item" bindtap="navToInboundList">
+        <text>入库单据记录</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="link-item" bindtap="navToOutboundList">
+        <text>出库单据记录</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="link-item" bindtap="navToCheckList">
+        <text>盘点历史记录</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+</view>

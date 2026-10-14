@@ -1,0 +1,161 @@
+.search-card {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 大号搜索行 */
+.search-main-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.search-input-large {
+  flex: 1;
+  background-color: #ffffff;
+  border: 2rpx solid #1890ff;
+  border-radius: 6rpx;
+  padding: 12rpx 16rpx;
+  height: 72rpx;
+  font-size: 26rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+.btn-search-action {
+  background-color: #1890ff;
+  color: #ffffff;
+  font-size: 26rpx;
+  padding: 0 24rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 6rpx;
+  margin: 0;
+  border: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-reset-action {
+  background-color: #f0f0f0;
+  color: #666666;
+  font-size: 26rpx;
+  padding: 0 18rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 6rpx;
+  margin: 0;
+  border: 1rpx solid #d9d9d9;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 按钮行：彻底杜绝换行，左右对齐 */
+.action-sub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.filter-group {
+  display: flex;
+  gap: 12rpx;
+  flex-shrink: 0;
+}
+
+.filter-item {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  background-color: #fafafa;
+  color: #555555;
+  border: 1rpx solid #d9d9d9;
+  border-radius: 4rpx;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.filter-active {
+  background-color: #1890ff;
+  color: #ffffff;
+  border-color: #1890ff;
+  font-weight: 500;
+}
+
+.filter-warn {
+  background-color: #f5222d !important;
+  border-color: #f5222d !important;
+}
+
+.btn-add-goods {
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background-color: #52c41a;
+  color: #ffffff;
+  border: 1rpx solid #52c41a;
+  padding: 12rpx 20rpx;
+  font-size: 26rpx;
+  border-radius: 4rpx;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.btn-add-goods:active {
+  background-color: #389e0d;
+}
+
+/* 列表项卡片 */
+.item-card {
+  padding: 20rpx;
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f0f0f0;
+  padding-bottom: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.goods-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.item-detail {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.8;
+}
+
+.item-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 12rpx;
+  margin-top: 12rpx;
+}
+
+.stock-show {
+  font-size: 26rpx;
+  color: #444444;
+}
+
+.stock-bold {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.text-blue {
+  color: #1890ff;
+}
+
+.text-red {
+  color: #f5222d;
+}

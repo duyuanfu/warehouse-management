@@ -1,0 +1,136 @@
+.order-card {
+  padding: 20rpx;
+}
+
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+  padding-bottom: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.order-no {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.order-body .info-line {
+  font-size: 24rpx;
+  color: #555555;
+  margin-bottom: 6rpx;
+}
+
+.order-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #eeeeee;
+  padding-top: 12rpx;
+  margin-top: 12rpx;
+}
+
+.total-text {
+  font-size: 24rpx;
+  color: #555555;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-green {
+  color: #52c41a;
+  font-weight: bold;
+}
+
+.text-red {
+  color: #f5222d;
+  font-weight: bold;
+}
+
+/* 弹窗样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 30rpx;
+}
+
+.modal-box {
+  background-color: #ffffff;
+  border: 1rpx solid #cccccc;
+  border-radius: 6rpx;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.modal-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.modal-close {
+  font-size: 24rpx;
+  color: #888888;
+}
+
+.modal-body {
+  padding: 20rpx;
+  max-height: 50vh;
+}
+
+.detail-box {
+  background-color: #fafafa;
+  border: 1rpx solid #eeeeee;
+  padding: 14rpx;
+  border-radius: 4rpx;
+  margin-bottom: 12rpx;
+}
+
+.detail-name {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 6rpx;
+}
+
+.detail-sub {
+  font-size: 22rpx;
+  color: #777777;
+  margin-bottom: 6rpx;
+}
+
+.detail-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #444444;
+}
+
+.modal-footer {
+  padding: 16rpx 20rpx;
+  border-top: 1rpx solid #eeeeee;
+  display: flex;
+  justify-content: flex-end;
+}

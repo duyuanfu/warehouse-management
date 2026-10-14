@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="card">
+    <view class="block-title">
+      {{readonly ? '查看货品详情' : (isEdit ? '编辑货品信息' : '录入新货品')}}
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">SKU编码 *</text>
+      <input class="form-input" placeholder="请输入SKU" value="{{goods.skuCode}}" bindinput="onInput" data-field="skuCode" disabled="{{isEdit || readonly}}" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">货品名称 *</text>
+      <input class="form-input" placeholder="请输入货品名称" value="{{goods.name}}" bindinput="onInput" data-field="name" disabled="{{readonly}}" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">规格型号</text>
+      <input class="form-input" placeholder="请输入规格" value="{{goods.spec}}" bindinput="onInput" data-field="spec" disabled="{{readonly}}" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">所属仓库 *</text>
+      <picker bindchange="onWarehouseChange" value="{{warehouseIndex}}" range="{{warehouseList}}" range-key="name" disabled="{{readonly}}">
+        <view class="form-picker">
+          <text>{{warehouseList[warehouseIndex] ? warehouseList[warehouseIndex].name : '请选择仓库'}}</text>
+          <text class="arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item" wx:if="{{!isEdit}}">
+      <text class="form-label">初始库存量</text>
+      <input class="form-input" type="number" placeholder="默认0" value="{{goods.stockQuantity}}" bindinput="onInput" data-field="stockQuantity" disabled="{{readonly}}" />
+    </view>
+
+    <view class="form-item" wx:if="{{isEdit}}">
+      <text class="form-label">当前库存量 (出入库或盘点时自动更新)</text>
+      <input class="form-input" disabled value="{{goods.stockQuantity}} 件 (版本号: v{{goods.version}})" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">安全库存预警值</text>
+      <input class="form-input" type="number" placeholder="低于该值预警，默认10" value="{{goods.safetyStock}}" bindinput="onInput" data-field="safetyStock" disabled="{{readonly}}" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">参考单价 (元)</text>
+      <input class="form-input" type="digit" placeholder="0.00" value="{{goods.price}}" bindinput="onInput" data-field="price" disabled="{{readonly}}" />
+    </view>
+
+    <!-- 主管操作按钮 -->
+    <block wx:if="{{!readonly}}">
+      <view class="btn-primary" bindtap="handleSubmit">保存货品档案</view>
+      <view wx:if="{{isEdit}}" class="btn-secondary btn-del-goods" bindtap="handleDelete">删除此货品</view>
+    </block>
+  </view>
+</view>

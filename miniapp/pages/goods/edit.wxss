@@ -1,0 +1,19 @@
+.block-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 14rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  margin-bottom: 20rpx;
+}
+
+.btn-del-goods {
+  margin-top: 16rpx;
+  color: #f5222d;
+  background-color: #fff1f0;
+  border-color: #ffa39e;
+}
+
+.arrow {
+  color: #999999;
+}

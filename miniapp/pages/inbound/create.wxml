@@ -1,0 +1,67 @@
+<view class="container">
+  <view class="card">
+    <view class="block-title">新建入库单</view>
+    
+    <view class="form-item">
+      <text class="form-label">供应商 *</text>
+      <picker bindchange="onSupplierChange" value="{{supplierIndex}}" range="{{supplierList}}" range-key="name">
+        <view class="form-picker">
+          <text>{{supplierList[supplierIndex] ? supplierList[supplierIndex].name : '请选择供应商'}}</text>
+          <text class="arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">接收仓库 *</text>
+      <picker bindchange="onWarehouseChange" value="{{warehouseIndex}}" range="{{warehouseList}}" range-key="name">
+        <view class="form-picker">
+          <text>{{warehouseList[warehouseIndex] ? warehouseList[warehouseIndex].name : '请选择目标仓库'}}</text>
+          <text class="arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">备注</text>
+      <input class="form-input" placeholder="可填写批次或说明" value="{{remark}}" bindinput="onInputRemark" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="block-title item-title-row">
+      <text>入库明细</text>
+      <button class="btn-sm" bindtap="addItem">+ 增加货品项</button>
+    </view>
+
+    <view class="item-box" wx:for="{{items}}" wx:key="index">
+      <view class="item-head-row">
+        <text class="item-num">明细项 {{index + 1}}</text>
+        <button class="btn-sm btn-del" bindtap="removeItem" data-index="{{index}}" wx:if="{{items.length > 1}}">删除</button>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">货品</text>
+        <picker bindchange="onItemGoodsChange" data-index="{{index}}" value="{{item.goodsIndex}}" range="{{availableGoods}}" range-key="name">
+          <view class="form-picker">
+            <text>{{availableGoods[item.goodsIndex] ? availableGoods[item.goodsIndex].name + ' (现存:' + availableGoods[item.goodsIndex].stockQuantity + ')' : '请选择货品'}}</text>
+            <text class="arrow">></text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-row">
+        <view class="form-item flex-1">
+          <text class="form-label">入库数量</text>
+          <input class="form-input" type="number" placeholder="数量" value="{{item.quantity}}" bindinput="onItemQuantity" data-index="{{index}}" />
+        </view>
+        <view class="form-item flex-1">
+          <text class="form-label">进货单价</text>
+          <input class="form-input" type="digit" placeholder="单价" value="{{item.price}}" bindinput="onItemPrice" data-index="{{index}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class="btn-primary btn-submit" bindtap="handleSubmitInbound">提交入库</view>
+  </view>
+</view>
