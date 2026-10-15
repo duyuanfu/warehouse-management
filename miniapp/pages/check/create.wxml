@@ -56,7 +56,7 @@
     </view>
 
     <view class="btn-primary btn-submit" wx:if="{{goodsList.length > 0}}" bindtap="handleSubmitCheck">
-      确认盘点并同步库存
+      确认提交盘点记录
     </view>
   </view>
 </view>

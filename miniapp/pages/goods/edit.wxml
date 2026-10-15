@@ -35,7 +35,7 @@
     </view>
 
     <view class="form-item" wx:if="{{isEdit}}">
-      <text class="form-label">当前库存量 (出入库或盘点时自动更新)</text>
+      <text class="form-label">当前库存量 (出入库时自动更新)</text>
       <input class="form-input" disabled value="{{goods.stockQuantity}} 件 (版本号: v{{goods.version}})" />
     </view>
 

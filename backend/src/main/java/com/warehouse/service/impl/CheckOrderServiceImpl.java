@@ -9,7 +9,6 @@ import com.warehouse.dto.CheckItemDTO;
 import com.warehouse.entity.*;
 import com.warehouse.mapper.*;
 import com.warehouse.service.CheckOrderService;
-import com.warehouse.service.GoodsService;
 import com.warehouse.vo.CheckDetailVO;
 import com.warehouse.vo.CheckOrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +29,6 @@ public class CheckOrderServiceImpl extends ServiceImpl<CheckOrderMapper, CheckOr
 
     @Autowired
     private GoodsMapper goodsMapper;
-
-    @Autowired
-    private GoodsService goodsService;
 
     @Autowired
     private WarehouseMapper warehouseMapper;
@@ -67,7 +63,7 @@ public class CheckOrderServiceImpl extends ServiceImpl<CheckOrderMapper, CheckOr
 
         Long checkId = checkOrder.getId();
 
-        // 处理明细并更新货品库存
+        // 处理明细并保存盘点记录（仅记录盘点数，不修改实际商品库存）
         for (CheckItemDTO item : dto.getItems()) {
             Goods goods = goodsMapper.selectById(item.getGoodsId());
             if (goods == null) {
@@ -86,13 +82,6 @@ public class CheckOrderServiceImpl extends ServiceImpl<CheckOrderMapper, CheckOr
             detail.setDifferenceStock(diff);
             detail.setRemark(item.getRemark());
             checkDetailMapper.insert(detail);
-
-            // 更新库存至实际库存，并递增版本号
-            goods.setStockQuantity(actualStock);
-            int safety = goods.getSafetyStock() != null ? goods.getSafetyStock() : 0;
-            goods.setStatus(actualStock <= safety ? "WARNING" : "NORMAL");
-            // 通过 updateById 会自动触发乐观锁 @Version version 递增
-            goodsMapper.updateById(goods);
         }
 
         return checkId;

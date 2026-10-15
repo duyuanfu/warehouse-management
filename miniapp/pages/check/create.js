@@ -105,7 +105,7 @@ Page({
 
     try {
       await request.post('/check/create', payload);
-      wx.showToast({ title: '盘点调账完成', icon: 'success' });
+      wx.showToast({ title: '盘点记录已保存', icon: 'success' });
       setTimeout(() => {
         wx.redirectTo({ url: '/pages/check/list' });
       }, 1000);

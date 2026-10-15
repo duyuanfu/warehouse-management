@@ -19,7 +19,7 @@ public class CheckController {
     @PostMapping("/create")
     public Result<Long> createAndComplete(@RequestBody @Valid CheckDTO dto) {
         Long id = checkOrderService.createAndCompleteCheckOrder(dto);
-        return Result.success("盘点已完成，货品实际库存已更新", id);
+        return Result.success("盘点已完成，盘点记录已保存", id);
     }
 
     @GetMapping("/page")
