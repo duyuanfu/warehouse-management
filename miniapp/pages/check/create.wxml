@@ -32,7 +32,8 @@
           <text class="check-sku">SKU: {{item.skuCode}}</text>
         </view>
 
-        <view class="check-grid">
+        <!-- 网格列：主管显示三列(含盈亏结果)，普通用户显示两列(删除盈亏结果列) -->
+        <view class="check-grid {{isSupervisor ? 'grid-three' : 'grid-two'}}">
           <view class="col">
             <text class="col-label">系统账面</text>
             <text class="col-val">{{item.stockQuantity}}</text>
@@ -41,7 +42,8 @@
             <text class="col-label">实盘数量</text>
             <input class="actual-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
           </view>
-          <view class="col">
+          <!-- 仅主管可见盈亏结果 -->
+          <view class="col" wx:if="{{isSupervisor}}">
             <text class="col-label">盈亏结果</text>
             <text class="col-diff {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
               {{item.diff > 0 ? '+' + item.diff : item.diff}}

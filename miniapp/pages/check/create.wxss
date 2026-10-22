@@ -46,13 +46,22 @@
 
 .check-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   text-align: center;
   background-color: #ffffff;
   border: 1rpx solid #eeeeee;
   padding: 12rpx 0;
   border-radius: 4rpx;
+}
+
+/* 主管展示3列 */
+.grid-three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* 普通用户展示2列(删除盈亏结果列) */
+.grid-two {
+  grid-template-columns: 1fr 1fr;
 }
 
 .col {

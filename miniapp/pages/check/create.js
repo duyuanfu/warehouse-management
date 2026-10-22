@@ -4,6 +4,7 @@ const app = getApp();
 
 Page({
   data: {
+    isSupervisor: false,
     warehouseList: [],
     warehouseIndex: -1,
     goodsList: [],
@@ -11,6 +12,10 @@ Page({
   },
 
   async onLoad() {
+    const userInfo = app.globalData.userInfo || wx.getStorageSync('userInfo') || {};
+    this.setData({
+      isSupervisor: userInfo.role === 'SUPERVISOR'
+    });
     await this.loadWarehouses();
   },
 
