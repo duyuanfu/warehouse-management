@@ -44,86 +44,97 @@
   color: #777777;
 }
 
-/* 表格化两行布局：上面是表头，下面是数值行 */
-.check-table {
+/* 表格化两行布局容器 */
+.check-table-container {
   background-color: #ffffff;
   border: 1rpx solid #eeeeee;
-  border-radius: 4rpx;
-  padding: 16rpx 8rpx;
+  border-radius: 6rpx;
+  padding: 16rpx 10rpx;
   box-sizing: border-box;
+  width: 100%;
 }
 
-.row-labels {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 10rpx;
+/* 通用行：严格单行横向排版，绝不换行 */
+.table-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-.cell-label {
-  flex: 1;
+/* 1. 表头行 */
+.table-header-row {
+  margin-bottom: 12rpx;
+}
+
+.table-col-header {
+  flex: 1 1 0 !important;
+  width: 0 !important;
   text-align: center;
-  font-size: 22rpx;
+  font-size: 24rpx;
   color: #888888;
+  white-space: nowrap;
 }
 
-/* 核心数值行：Flex单行绝对水平垂直居中 */
-.row-values {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  height: 56rpx;
+/* 2. 数值行：统一固定高度，完全垂直居中 */
+.table-value-row {
+  height: 64rpx;
 }
 
-.cell-val {
-  flex: 1;
-  height: 56rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.table-col-value {
+  flex: 1 1 0 !important;
+  width: 0 !important;
+  height: 64rpx;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   text-align: center;
   box-sizing: border-box;
 }
 
-.num-text {
-  font-size: 30rpx;
+/* 数字文本：高度固定，单行垂直居中对齐 */
+.val-text {
+  font-size: 32rpx;
   font-weight: bold;
-  color: #333333;
-  line-height: 56rpx;
-  height: 56rpx;
-  display: inline-flex;
+  color: #222222;
+  height: 52rpx;
+  line-height: 52rpx;
+  display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-.actual-input {
-  border: 2rpx solid #1890ff;
-  border-radius: 4rpx;
-  width: 130rpx;
-  height: 52rpx;
+/* 输入框：固定高度，与左右文字中轴完全重合 */
+.val-input {
+  border: 2rpx solid #1890ff !important;
+  border-radius: 6rpx !important;
+  width: 130rpx !important;
+  height: 52rpx !important;
   min-height: 52rpx !important;
   line-height: 52rpx !important;
-  text-align: center;
-  font-size: 28rpx;
-  font-weight: bold;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  background-color: #ffffff;
-  color: #222222;
+  text-align: center !important;
+  font-size: 28rpx !important;
+  font-weight: bold !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #ffffff !important;
+  color: #222222 !important;
 }
 
 .text-green {
-  color: #52c41a;
+  color: #52c41a !important;
 }
 
 .text-red {
-  color: #f5222d;
+  color: #f5222d !important;
 }
 
 .remark-input-box {
-  margin-top: 12rpx;
+  margin-top: 14rpx;
 }
 
 .form-input-sm {

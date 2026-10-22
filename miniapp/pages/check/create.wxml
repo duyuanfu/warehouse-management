@@ -32,26 +32,25 @@
           <text class="check-sku">SKU: {{item.skuCode}}</text>
         </view>
 
-        <!-- 表格行级布局：表头一行，数值一行，确保下方的三个数字在同一行内绝对垂直居中 -->
-        <view class="check-table">
-          <!-- 表头标签行 -->
-          <view class="row-labels">
-            <view class="cell-label">系统账面</view>
-            <view class="cell-label">实盘数量</view>
-            <view class="cell-label" wx:if="{{isSupervisor}}">盈亏结果</view>
+        <!-- 表格两行排版：上面一行表头，下面一行数值，严格Flex等宽并在同一水平线绝对垂直居中 -->
+        <view class="check-table-container">
+          <!-- 1. 表头行 -->
+          <view class="table-row table-header-row">
+            <view class="table-col-header">系统账面</view>
+            <view class="table-col-header">实盘数量</view>
+            <view class="table-col-header" wx:if="{{isSupervisor}}">盈亏结果</view>
           </view>
 
-          <!-- 数值展示行：在同一行内居中 -->
-          <view class="row-values">
-            <view class="cell-val">
-              <text class="num-text">{{item.stockQuantity}}</text>
+          <!-- 2. 数值行：同一Flex行，align-items: center，三个数字绝对在同一条水平中线上垂直居中 -->
+          <view class="table-row table-value-row">
+            <view class="table-col-value">
+              <text class="val-text">{{item.stockQuantity}}</text>
             </view>
-            <view class="cell-val">
-              <input class="actual-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
+            <view class="table-col-value">
+              <input class="val-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
             </view>
-            <!-- 仅主管可见盈亏结果 -->
-            <view class="cell-val" wx:if="{{isSupervisor}}">
-              <text class="num-text {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
+            <view class="table-col-value" wx:if="{{isSupervisor}}">
+              <text class="val-text {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
                 {{item.diff > 0 ? '+' + item.diff : item.diff}}
               </text>
             </view>
