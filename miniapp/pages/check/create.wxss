@@ -44,73 +44,74 @@
   color: #777777;
 }
 
-.check-grid {
-  display: grid;
-  align-items: center;
-  text-align: center;
+/* 表格化两行布局：上面是表头，下面是数值行 */
+.check-table {
   background-color: #ffffff;
   border: 1rpx solid #eeeeee;
-  padding: 16rpx 0;
   border-radius: 4rpx;
+  padding: 16rpx 8rpx;
+  box-sizing: border-box;
 }
 
-/* 主管展示3列 */
-.grid-three {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-/* 普通用户展示2列(删除盈亏结果列) */
-.grid-two {
-  grid-template-columns: 1fr 1fr;
-}
-
-.col {
+.row-labels {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 10rpx;
 }
 
-.col-label {
+.cell-label {
+  flex: 1;
+  text-align: center;
   font-size: 22rpx;
   color: #888888;
-  margin-bottom: 8rpx;
 }
 
-/* 下方数值区域统一容器：严格垂直与水平居中 */
-.col-value-box {
+/* 核心数值行：Flex单行绝对水平垂直居中 */
+.row-values {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 56rpx;
+}
+
+.cell-val {
+  flex: 1;
   height: 56rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   box-sizing: border-box;
 }
 
-.col-val {
-  font-size: 28rpx;
-  color: #444444;
+.num-text {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
   line-height: 56rpx;
+  height: 56rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .actual-input {
-  border: 1rpx solid #1890ff;
+  border: 2rpx solid #1890ff;
   border-radius: 4rpx;
-  width: 120rpx;
+  width: 130rpx;
   height: 52rpx;
-  min-height: 52rpx;
-  line-height: 52rpx;
+  min-height: 52rpx !important;
+  line-height: 52rpx !important;
   text-align: center;
   font-size: 28rpx;
   font-weight: bold;
   box-sizing: border-box;
   padding: 0;
-}
-
-.col-diff {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #666666;
-  line-height: 56rpx;
+  margin: 0;
+  background-color: #ffffff;
+  color: #222222;
 }
 
 .text-green {

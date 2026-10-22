@@ -12,11 +12,19 @@ Page({
   },
 
   async onLoad() {
+    this.checkRole();
+    await this.loadWarehouses();
+  },
+
+  onShow() {
+    this.checkRole();
+  },
+
+  checkRole() {
     const userInfo = app.globalData.userInfo || wx.getStorageSync('userInfo') || {};
     this.setData({
       isSupervisor: userInfo.role === 'SUPERVISOR'
     });
-    await this.loadWarehouses();
   },
 
   async loadWarehouses() {

@@ -32,25 +32,26 @@
           <text class="check-sku">SKU: {{item.skuCode}}</text>
         </view>
 
-        <!-- 网格列：主管显示三列(含盈亏结果)，普通用户显示两列(删除盈亏结果列) -->
-        <view class="check-grid {{isSupervisor ? 'grid-three' : 'grid-two'}}">
-          <view class="col">
-            <text class="col-label">系统账面</text>
-            <view class="col-value-box">
-              <text class="col-val">{{item.stockQuantity}}</text>
-            </view>
+        <!-- 表格行级布局：表头一行，数值一行，确保下方的三个数字在同一行内绝对垂直居中 -->
+        <view class="check-table">
+          <!-- 表头标签行 -->
+          <view class="row-labels">
+            <view class="cell-label">系统账面</view>
+            <view class="cell-label">实盘数量</view>
+            <view class="cell-label" wx:if="{{isSupervisor}}">盈亏结果</view>
           </view>
-          <view class="col">
-            <text class="col-label">实盘数量</text>
-            <view class="col-value-box">
+
+          <!-- 数值展示行：在同一行内居中 -->
+          <view class="row-values">
+            <view class="cell-val">
+              <text class="num-text">{{item.stockQuantity}}</text>
+            </view>
+            <view class="cell-val">
               <input class="actual-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
             </view>
-          </view>
-          <!-- 仅主管可见盈亏结果 -->
-          <view class="col" wx:if="{{isSupervisor}}">
-            <text class="col-label">盈亏结果</text>
-            <view class="col-value-box">
-              <text class="col-diff {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
+            <!-- 仅主管可见盈亏结果 -->
+            <view class="cell-val" wx:if="{{isSupervisor}}">
+              <text class="num-text {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
                 {{item.diff > 0 ? '+' + item.diff : item.diff}}
               </text>
             </view>
