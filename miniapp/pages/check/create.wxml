@@ -36,18 +36,24 @@
         <view class="check-grid {{isSupervisor ? 'grid-three' : 'grid-two'}}">
           <view class="col">
             <text class="col-label">系统账面</text>
-            <text class="col-val">{{item.stockQuantity}}</text>
+            <view class="col-value-box">
+              <text class="col-val">{{item.stockQuantity}}</text>
+            </view>
           </view>
           <view class="col">
             <text class="col-label">实盘数量</text>
-            <input class="actual-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
+            <view class="col-value-box">
+              <input class="actual-input" type="number" placeholder="填入" value="{{item.actualStock}}" bindinput="onActualStockInput" data-index="{{index}}" />
+            </view>
           </view>
           <!-- 仅主管可见盈亏结果 -->
           <view class="col" wx:if="{{isSupervisor}}">
             <text class="col-label">盈亏结果</text>
-            <text class="col-diff {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
-              {{item.diff > 0 ? '+' + item.diff : item.diff}}
-            </text>
+            <view class="col-value-box">
+              <text class="col-diff {{item.diff > 0 ? 'text-green' : (item.diff < 0 ? 'text-red' : '')}}">
+                {{item.diff > 0 ? '+' + item.diff : item.diff}}
+              </text>
+            </view>
           </view>
         </view>
 
